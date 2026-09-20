@@ -38,16 +38,20 @@ UseHugoToc = true
 comments = false
 
 [params.homeInfoParams]
-Title = "你好，我是 Lelouch"
+Title = "Lelouch VI"
 Content = """
-这里记录我的技术学习、项目实践与个人思考。
+记录技术、学习、项目与思考。
 
-主要内容包括 STM32、FPGA、自动控制、数学、编程以及学习记录。
+主要关注 STM32、FPGA、自动控制、数学、编程，以及一些长期值得记录的内容。
 """
 
 [[params.socialIcons]]
 name = "github"
 url = "https://github.com/lelouchvi0416"
+
+[[params.socialIcons]]
+name = "rss"
+url = "/index.xml"
 
 [[menu.main]]
 identifier = "posts"
