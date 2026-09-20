@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="home-shell">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="status-dot"></span> LELOUCH'S DIGITAL GARDEN</p>
+    <h1 id="hero-title">保持好奇，<br>让想法<span>落地生长。</span></h1>
+    <p class="hero-intro">你好，我是 <strong>Lelouch VI</strong>。<br>在代码与电路之间探索，记录技术、学习与思考。<br>把每一次实践，变成下一次出发的起点。</p>
+    <div class="hero-actions"><a class="button primary-button" href="{{ "posts/" | relURL }}">探索文章 <span>↗</span></a><a class="button" href="{{ "projects/" | relURL }}">我的项目 <span>→</span></a></div>
+    <div class="hero-interests"><span>嵌入式系统</span><span>FPGA</span><span>自动控制</span><span>编程</span></div>
+  </div>
+  <div class="workbench" aria-label="电路与代码组成的工程主题插画">
+    <div class="board-label"><span>THE WORKBENCH</span><span>01 / ∞</span></div>
+    <svg class="circuit" viewBox="0 0 440 290" fill="none" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="1.4" opacity=".45"><path d="M0 62h92l40 40h48M0 198h70l30-30h80M440 57h-82l-45 45h-53M440 224h-95l-56-56h-29M220 0v66M194 0v40l-25 25v36M246 290v-61l-24-24v-38M0 242h130l32-32h32v-43M440 142H260"/><circle cx="92" cy="62" r="5"/><circle cx="70" cy="198" r="5"/><circle cx="345" cy="224" r="5"/><circle cx="358" cy="57" r="5"/></g>
+      <rect x="163" y="83" width="114" height="114" rx="20" fill="var(--entry)" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="175" y="95" width="90" height="90" rx="12" stroke="currentColor" opacity=".3"/>
+      <text x="220" y="144" text-anchor="middle" fill="currentColor" font-family="monospace" font-size="30">LV.</text>
+      <text x="220" y="166" text-anchor="middle" fill="currentColor" font-family="monospace" font-size="8" letter-spacing="3">BUILD & LEARN</text>
+      <g fill="currentColor"><circle cx="132" cy="102" r="3"/><circle cx="313" cy="102" r="3"/><circle cx="100" cy="168" r="3"/></g>
+    </svg>
+    <div class="code-note"><span class="code-comment">// learning, one bit at a time</span><br><span class="code-key">while</span> (curious) {<br>&nbsp;&nbsp;learn(); build(); <span class="code-key">share</span>();<br>}</div>
+    <div class="board-footer"><span class="status-dot"></span> 持续学习 · 持续构建 <span>↗</span></div>
+  </div>
+</section>
+<div class="home-divider"><span>记录，是理解的开始。</span><span>NOTES / PROJECTS / IDEAS</span></div>
+<div class="home-columns">
+<section aria-labelledby="latest-title">
+ <div class="section-heading"><div><p class="eyebrow">THE JOURNAL</p><h2 id="latest-title">最近的记录<span class="count">{{ len (where site.RegularPages "Section" "posts") }}</span></h2></div><a href="{{ "archives/" | relURL }}">全部归档 ↗</a></div>
+ {{ range first 5 (where site.RegularPages "Section" "posts") }}
+ <article class="journal-card">
+  <div class="journal-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>{{ .ReadingTime }} 分钟阅读</span>{{ if .Weight }}<span>置顶</span>{{ end }}</div>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }} <span>↗</span></a></h3>
+  {{ partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" (.Param "cover.hiddenInList")) }}
+  <p>{{ .Description | default (.Summary | plainify) | truncate 160 }}</p>
+  <div class="journal-bottom"><span>{{ with .Params.tags }}{{ delimit (first 3 .) " / " }}{{ else }}学习记录{{ end }}</span><a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">阅读全文 →</a></div>
+ </article>
+ {{ else }}<p class="empty-state">第一篇记录正在路上。保持好奇，慢慢积累。</p>{{ end }}
+ <a class="all-posts" href="{{ "posts/" | relURL }}">浏览所有文章 <span>→</span></a>
+</section>
+<aside class="garden-sidebar">
+ <section class="side-card"><p class="eyebrow">EXPLORE</p><h2>按主题漫游</h2><div class="topic-links">{{ range site.Taxonomies.categories.ByCount }}<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}<span>{{ .Count }} ↗</span></a>{{ else }}<p>从一篇笔记开始，<br>慢慢建立自己的知识地图。</p><a href="{{ "posts/" | relURL }}">阅读全部笔记 <span>↗</span></a>{{ end }}</div><a class="subtle-link" href="{{ "tags/" | relURL }}">探索全部标签 →</a></section>
+ <section class="side-card small-about"><span class="mini-mark">LV.</span><h2>一个长期生长的地方</h2><p>这里存放学习中的问题、工程中的实践，以及值得留下的灵感。</p><a class="subtle-link" href="{{ "about/" | relURL }}">更多关于我 ↗</a></section>
+</aside>
+</div>
+<section class="featured-project" aria-labelledby="project-title"><div><p class="eyebrow">BUILT WITH CURIOSITY</p><h2 id="project-title">从想法，到真实世界。</h2><p>Bridge Monitor System · 基于 STM32F103 的桥梁安全监测系统</p><div class="project-tags"><span>STM32</span><span>传感器</span><span>MQTT</span></div></div><a class="button" href="{{ "projects/" | relURL }}">探索项目 ↗</a></section>
+<section class="subscribe-strip"><div><h2>让知识慢慢积累。</h2><p>通过 RSS 订阅，在你喜欢的阅读器里接收新文章。</p></div><a href="{{ "index.xml" | relURL }}" class="button">订阅 RSS ↗</a></section>
+</div>
+{{ end }}

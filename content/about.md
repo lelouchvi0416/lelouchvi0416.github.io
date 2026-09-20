@@ -1,6 +1,9 @@
 +++
 title = "关于我"
 draft = false
+hideMeta = true
+ShowToc = false
+ShowPostNavLinks = false
 +++
 
 你好，我是 lelouchvi0416。

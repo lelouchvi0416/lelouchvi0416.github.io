@@ -1,6 +1,10 @@
 +++
 title = "项目"
+layout = "projects"
 draft = false
+hideMeta = true
+ShowToc = false
+ShowPostNavLinks = false
 +++
 
 ## Bridge Monitor System

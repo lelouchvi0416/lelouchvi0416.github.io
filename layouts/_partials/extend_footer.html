@@ -1,0 +1,2 @@
+{{ $js := resources.Get "js/garden.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer data-search-url="{{ "search/" | relURL }}"></script>

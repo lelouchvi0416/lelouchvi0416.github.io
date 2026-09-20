@@ -1,4 +1,4 @@
-﻿backend:
+backend:
   name: turbo-github
   turbo_site_id: 163e247b-645b-488b-82f3-30ab8836ecc3
   branch: main
@@ -38,10 +38,14 @@ collections:
         hint: "用于首页简介和 SEO 描述"
 
       - label: "封面图"
-        name: "cover.image"
-        widget: "image"
+        name: "cover"
+        widget: "object"
         required: false
-        hint: "文章列表和文章顶部显示的图片"
+        collapsed: true
+        fields:
+          - {label: "图片", name: "image", widget: "image", required: false}
+          - {label: "图片说明", name: "alt", widget: "string", required: false}
+          - {label: "图下注释", name: "caption", widget: "string", required: false}
 
       - label: "分类"
         name: "categories"
@@ -62,6 +66,13 @@ collections:
         name: "ShowToc"
         widget: "boolean"
         default: true
+        required: false
+
+      - label: "排序权重（越小越靠前，留空按日期）"
+        name: "weight"
+        widget: "number"
+        value_type: "int"
+        min: 1
         required: false
 
       - label: "正文"

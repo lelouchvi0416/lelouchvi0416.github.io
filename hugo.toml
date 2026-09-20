@@ -1,5 +1,7 @@
 baseURL = "https://lelouchvi0416.github.io/"
 locale = "zh-cn"
+defaultContentLanguage = "zh"
+hasCJKLanguage = true
 title = "Lelouch VI"
 theme = "PaperMod"
 
@@ -16,6 +18,9 @@ disableXML = true
 minifyOutput = true
 
 [params]
+mainSections = ["posts"]
+DateFormat = "2006.01.02"
+ShowPageNums = true
 env = "production"
 title = "Lelouch VI"
 description = "记录技术、学习、项目与思考"
@@ -25,12 +30,12 @@ defaultTheme = "auto"
 disableThemeToggle = false
 
 ShowReadingTime = true
-ShowShareButtons = true
+ShowShareButtons = false
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
 ShowToc = true
-TocOpen = false
+TocOpen = true
 ShowWordCount = true
 ShowRssButtonInSectionTermList = true
 UseHugoToc = true
@@ -97,3 +102,13 @@ weight = 70
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+[params.assets]
+favicon = "/favicon.svg"
+theme_color = "#207b61"
+
+[markup.highlight]
+noClasses = false
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 4
