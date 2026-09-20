@@ -1,6 +1,6 @@
 ﻿backend:
   name: turbo-github
-  turbo_site_id: TEMP_SITE_ID
+  turbo_site_id: 163e247b-645b-488b-82f3-30ab8836ecc3
   branch: main
 
 media_folder: "static/images/uploads"
