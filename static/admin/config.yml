@@ -1,6 +1,6 @@
 ﻿backend:
   name: turbo-github
-  turbo_site_id: 2149d43b-d1f5-41a1-832a-a6a534db9a2e
+  turbo_site_id: 163e247b-645b-488b-82f3-30ab8836ecc3
   branch: main
 
 media_folder: "static/images/uploads"
@@ -13,6 +13,15 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
 
+    sortable_fields:
+      - "date"
+      - "title"
+
+    view_filters:
+      - label: "草稿"
+        field: "draft"
+        pattern: true
+
     fields:
       - label: "标题"
         name: "title"
@@ -22,10 +31,17 @@ collections:
         name: "date"
         widget: "datetime"
 
-      - label: "草稿"
-        name: "draft"
-        widget: "boolean"
-        default: false
+      - label: "摘要"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "用于首页简介和 SEO 描述"
+
+      - label: "封面图"
+        name: "cover.image"
+        widget: "image"
+        required: false
+        hint: "文章列表和文章顶部显示的图片"
 
       - label: "分类"
         name: "categories"
@@ -35,6 +51,17 @@ collections:
       - label: "标签"
         name: "tags"
         widget: "list"
+        required: false
+
+      - label: "草稿"
+        name: "draft"
+        widget: "boolean"
+        default: false
+
+      - label: "显示目录"
+        name: "ShowToc"
+        widget: "boolean"
+        default: true
         required: false
 
       - label: "正文"
